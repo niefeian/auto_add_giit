@@ -4,15 +4,21 @@
 read -p "您的Github账号名称: " input
 echo "账号名称: $input"
 
+mkdir $input
 
+cd $input
 touch $input.sh
 content_="
 git config user.email 'niefeian@gmail.com'
 git config user.name '$input'
+add .
+commit -m '代码正常提交'
+git push
 " # 需要追加的内容
-file_path_=$input.sh # 目标文件路径
-echo  "$content_" >> $file_path_
 
+file_path_=$input.sh # 目标文件路径
+
+echo  "$content_" >> $file_path_
 
 cd ~/.ssh
 echo "请输入 id_rsa_$input"
